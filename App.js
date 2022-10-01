@@ -7,10 +7,16 @@ export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
 
   const addInputHandler = (enteredGoalText) => {
-    setCourseGoals((current) => [
-      ...current,
-      { text: enteredGoalText, id: Math.random().toString() },
-    ]);
+    enteredGoalText
+      ? setCourseGoals((current) => [
+          ...current,
+          { text: enteredGoalText, id: Math.random().toString() },
+        ])
+      : alert("Input field is empty!");
+  };
+
+  const deleteGoalHandler = (id) => {
+    setCourseGoals((current) => current.filter((goal) => goal.id !== id));
   };
   return (
     <View style={styles.appContainer}>
@@ -21,7 +27,13 @@ export default function App() {
           keyExtractor={(item, index) => {
             return item.id;
           }}
-          renderItem={(itemData) => <GoalItem text={itemData.item.text} />}
+          renderItem={(itemData) => (
+            <GoalItem
+              onDeleteItem={deleteGoalHandler}
+              text={itemData.item.text}
+              id={itemData.item.id}
+            />
+          )}
         />
       </View>
     </View>
