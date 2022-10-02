@@ -5,7 +5,7 @@ const GoalItem = ({ text, id, onDeleteItem }) => {
   return (
     <Pressable
       android_ripple={{ color: '#210644' }}
-      style={pressed => pressed && styles.pressedItem}
+      style={({ pressed }) => pressed && styles.pressedItem}
       onPress={onDeleteItem.bind(this, id)}
     >
       <View style={styles.goalItem}>
