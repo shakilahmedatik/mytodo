@@ -8,12 +8,15 @@ export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false)
 
   const addInputHandler = enteredGoalText => {
-    enteredGoalText
-      ? setCourseGoals(current => [
-          ...current,
-          { text: enteredGoalText, id: Math.random().toString() },
-        ])
-      : alert('Input field is empty!')
+    if (enteredGoalText) {
+      setCourseGoals(current => [
+        ...current,
+        { text: enteredGoalText, id: Math.random().toString() },
+      ])
+      setModalIsVisible(false)
+    } else {
+      alert('Input field is empty!')
+    }
   }
 
   const deleteGoalHandler = id => {
@@ -24,6 +27,10 @@ export default function App() {
     setModalIsVisible(true)
   }
 
+  const endAddGoalHandler = () => {
+    setModalIsVisible(false)
+  }
+
   return (
     <View style={styles.appContainer}>
       <Button
@@ -31,7 +38,11 @@ export default function App() {
         color='#5e0acc'
         onPress={startAddGoalHandler}
       />
-      <GoalInput visible={modalIsVisible} addInputHandler={addInputHandler} />
+      <GoalInput
+        visible={modalIsVisible}
+        onCancel={endAddGoalHandler}
+        addInputHandler={addInputHandler}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
