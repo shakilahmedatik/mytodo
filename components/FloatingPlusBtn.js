@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const FloatingButton = ({ startAddGoalHandler }) => {
+const FloatingPlusBtn = ({ startAddGoalHandler }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -11,7 +11,7 @@ const FloatingButton = ({ startAddGoalHandler }) => {
       <Image
         // FAB using TouchableOpacity with an image
         // For online image
-        source={require('../assets/goal.png')}
+        source={require('../assets/Add.png')}
         // For local image
         //source={require('./images/float-add-icon.png')}
         style={styles.floatingButtonStyle}
@@ -20,7 +20,7 @@ const FloatingButton = ({ startAddGoalHandler }) => {
   )
 }
 
-export default FloatingButton
+export default FloatingPlusBtn
 
 const styles = StyleSheet.create({
   touchableOpacityStyle: {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     right: 30,
     bottom: 30,
-    backgroundColor: '#f31282',
+    backgroundColor: '#BDB6B6',
   },
   floatingButtonStyle: {
     resizeMode: 'contain',

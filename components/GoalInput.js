@@ -1,5 +1,6 @@
 import { StyleSheet, TextInput, Button, View, Modal, Image } from 'react-native'
 import React, { useState } from 'react'
+import FloatingCancelBtn from './FloatingCancelBtn'
 
 const GoalInput = ({ addInputHandler, visible, onCancel }) => {
   const [enteredGoalText, setEnteredGoalText] = useState('')
@@ -9,6 +10,10 @@ const GoalInput = ({ addInputHandler, visible, onCancel }) => {
   return (
     <Modal visible={visible} animationType='slide'>
       <View style={styles.inputContainer}>
+        <FloatingCancelBtn
+          onCancel={onCancel}
+          setEnteredGoalText={setEnteredGoalText}
+        />
         <Image style={styles.image} source={require('../assets/goal.png')} />
         <TextInput
           value={enteredGoalText}
@@ -17,16 +22,6 @@ const GoalInput = ({ addInputHandler, visible, onCancel }) => {
           placeholder='Your course goal!'
         />
         <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              color='#f31282'
-              title='Cancel'
-              onPress={() => {
-                onCancel()
-                setEnteredGoalText('')
-              }}
-            />
-          </View>
           <View style={styles.button}>
             <Button
               color='#b180f0'
@@ -50,7 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#311b6b',
+    backgroundColor: '#5F5151',
     padding: 16,
   },
   textInput: {

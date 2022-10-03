@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { useState } from 'react'
 import { StyleSheet, View, FlatList, Text } from 'react-native'
-import FloatingButton from './components/FloatingButton'
+import FloatingPlusBtn from './components/FloatingPlusBtn'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
 
@@ -63,7 +63,7 @@ export default function App() {
             <Text style={styles.emptyText}>No goals yet! Add now. </Text>
           </View>
         )}
-        <FloatingButton startAddGoalHandler={startAddGoalHandler} />
+        <FloatingPlusBtn startAddGoalHandler={startAddGoalHandler} />
       </View>
     </>
   )
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emptyText: {
-    color: '#b180f0',
+    color: 'white',
+    fontSize: 20,
   },
 })
