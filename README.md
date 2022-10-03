@@ -7,7 +7,7 @@ A simple Todo app built with React Native for managing daily tasks.
 
 
 
-## APK Build v1.0.0 - [Download🫵](https://expo.dev/artifacts/eas/e4Hpdh38tzMCPnBY518tCd.apk)
+## APK Build v1.0.0 - [Download🫵](https://expo.dev/artifacts/eas/aagjdma17qavTQykkiMo1U.apk)
 
 
 
