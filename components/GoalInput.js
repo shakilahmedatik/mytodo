@@ -1,6 +1,7 @@
 import { StyleSheet, TextInput, Button, View, Modal, Image } from 'react-native'
 import React, { useState } from 'react'
 import FloatingCancelBtn from './FloatingCancelBtn'
+import FloatingAddBtn from './FloatingAddBtn'
 
 const GoalInput = ({ addInputHandler, visible, onCancel }) => {
   const [enteredGoalText, setEnteredGoalText] = useState('')
@@ -14,22 +15,24 @@ const GoalInput = ({ addInputHandler, visible, onCancel }) => {
           onCancel={onCancel}
           setEnteredGoalText={setEnteredGoalText}
         />
-        <Image style={styles.image} source={require('../assets/goal.png')} />
-        <TextInput
-          value={enteredGoalText}
-          onChangeText={goalInputHandler}
-          style={styles.textInput}
-          placeholder='Your course goal!'
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              color='#b180f0'
-              onPress={() => {
-                addInputHandler(enteredGoalText)
-                setEnteredGoalText('')
-              }}
-              title='Add Goal'
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={require('../assets/File_dock_duotone_line.png')}
+          />
+        </View>
+        <View style={styles.inputBtnContainer}>
+          <TextInput
+            value={enteredGoalText}
+            onChangeText={goalInputHandler}
+            style={styles.textInput}
+            placeholder="Don't Wait, Add a Task!"
+          />
+          <View style={styles.addBtn}>
+            <FloatingAddBtn
+              enteredGoalText={enteredGoalText}
+              setEnteredGoalText={setEnteredGoalText}
+              addInputHandler={addInputHandler}
             />
           </View>
         </View>
@@ -48,14 +51,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#5F5151',
     padding: 16,
   },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#e4d0ff',
-    backgroundColor: '#e4d0ff',
-    color: '#120438',
-    borderRadius: 6,
+  inputBtnContainer: {
     width: '100%',
-    padding: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addBtn: { position: 'absolute', right: 36 },
+  textInput: {
+    backgroundColor: '#BDB6B6',
+    color: '#5F5151',
+    fontSize: 16,
+    borderRadius: 6,
+    width: '80%',
+    paddingHorizontal: 5,
+    paddingVertical: 15,
   },
   buttonContainer: {
     marginTop: 16,
@@ -65,9 +74,17 @@ const styles = StyleSheet.create({
     width: 100,
     marginHorizontal: 8,
   },
-  image: {
+  imageContainer: {
+    backgroundColor: '#BDB6B6',
     width: 100,
     height: 100,
-    margin: 20,
+    borderRadius: 60,
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: 70,
+    height: 70,
   },
 })

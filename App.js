@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { useState } from 'react'
 import { StyleSheet, View, FlatList, Text } from 'react-native'
+import EmptyList from './components/EmptyList'
 import FloatingPlusBtn from './components/FloatingPlusBtn'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
@@ -59,9 +60,7 @@ export default function App() {
             />
           </View>
         ) : (
-          <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>No goals yet! Add now. </Text>
-          </View>
+          <EmptyList />
         )}
         <FloatingPlusBtn startAddGoalHandler={startAddGoalHandler} />
       </View>
@@ -78,15 +77,5 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 4,
     marginTop: 30,
-  },
-  emptyContainer: {
-    flex: 1,
-    marginBottom: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  emptyText: {
-    color: 'white',
-    fontSize: 20,
   },
 })
