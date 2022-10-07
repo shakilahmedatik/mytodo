@@ -1,6 +1,6 @@
 # MyToDo
 
-A simple Todo app built with React Native for managing daily tasks. 
+A Todo app built with React Native for managing daily tasks. 
 
 
 ## Figma File - [View🫵](https://www.figma.com/file/BAjophVrJHaCpXyZau9i76/MyTodo)
